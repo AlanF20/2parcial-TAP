@@ -21,6 +21,7 @@ public class controlRad extends JFrame {
 	private JButton btnAnterior;
 	private JButton btnSiguiente;
 	private JButton btnEvaluar;
+	private  int iterador=0;
 	
 	/**
 	 * Launch the application.
@@ -35,7 +36,29 @@ public class controlRad extends JFrame {
 					e.printStackTrace();
 				}
 			}
+			
+			
 		});
+	}
+	public int HaciaDelante(int num) {
+		int res=0;
+		for(int i=0; i <= miArreglo.length; i++) {
+			if(miArreglo[0]==num) {
+				 res=0;
+				
+			}else {
+				if(miArreglo[1]==num) {
+					 res=1;
+					
+				}else {
+					if(miArreglo[2] == num) {
+						 res=2;
+						
+					}
+				}
+			}
+		}
+		return res;
 	}
 
 	/**
@@ -69,39 +92,33 @@ public class controlRad extends JFrame {
 		btnSiguiente.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				for(int i=0; miArreglo.length <= 4; i++) {
-					if(miArreglo[0]==0) {
+				
+				
+				iterador++;
+					if(HaciaDelante(iterador)==0) {
 						lblQuestion.setText("Hola");
 						radAnswer1.setText("Respuesta 1");
 						radAnswer2.setText("Respuesta 2");
 						radAnswer3.setText("Respuesta 3");
 						
 					}else {
-						if(miArreglo[1]==1) {
+						if(HaciaDelante(iterador)==1) {
 							lblQuestion.setText("Hola 2");
 							radAnswer1.setText("Respuesta 4");
 							radAnswer2.setText("Respuesta 5");
 							radAnswer3.setText("Respuesta 6");
 							
 						}else {
-							if(miArreglo[2] == 2) {
+							if(HaciaDelante(iterador) == 2) {
 								lblQuestion.setText("Hola 3");
 								radAnswer1.setText("Respuesta 7");
 								radAnswer2.setText("Respuesta 8");
 								radAnswer3.setText("Respuesta 9");
 								
-							}else {
-								if(miArreglo[3]==3) {
-									lblQuestion.setText("Hola4");
-									radAnswer1.setText("Respuesta 10");
-									radAnswer2.setText("Respuesta 11");
-									radAnswer3.setText("Respuesta 12");
-									
-								}
 							}
 						}
 					}
-				}
+				
 			}
 		});
 		btnSiguiente.setBounds(131, 227, 89, 23);
